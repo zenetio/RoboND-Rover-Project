@@ -22,6 +22,7 @@ def update_rover(Rover, data):
             samples_ypos = np.int_([convert_to_float(pos.strip()) for pos in data["samples_y"].split(';')])
             Rover.samples_pos = (samples_xpos, samples_ypos)
             Rover.samples_to_find = np.int(data["sample_count"])
+            Rover.samples_found = np.zeros((len(Rover.samples_pos[0]))).astype(np.int)
       # Or just update elapsed time
       else:
             tot_time = time.time() - Rover.start_time
